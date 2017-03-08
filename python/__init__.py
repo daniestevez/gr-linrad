@@ -32,3 +32,5 @@ except ImportError:
 
 # import any pure python here
 #
+
+from linrad_server import linrad_server

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<block>
+  <name>Send RAW 24bit</name>
+  <key>linrad_send_raw24</key>
+  <category>[linrad]</category>
+  <import>import linrad</import>
+  <make>linrad.send_raw24($*ip, $base_port, $passband_center, $bufsize)</make>
+  
+  <param>
+    <name>IP</name>
+    <key>ip</key>
+    <value>"127.0.0.1"</value>
+    <type>string</type>
+  </param>
+
+  <param>
+    <name>Base port</name>
+    <key>base_port</key>
+    <value>50000</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Passband center</name>
+    <key>passband_center</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>Buffer size</name>
+    <key>bufsize</key>
+    <value>0x1000</value>
+    <type>int</type>
+  </param>
+ 
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+</block>

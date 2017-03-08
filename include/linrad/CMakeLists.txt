@@ -22,5 +22,5 @@
 ########################################################################
 install(FILES
     api.h
-    DESTINATION include/linrad
+    send_raw24.h DESTINATION include/linrad
 )

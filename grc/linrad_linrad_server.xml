@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<block>
+  <name>Linrad Net Server</name>
+  <key>linrad_server</key>
+  <category>[linrad]</category>
+  <import>import linrad</import>
+  <make>linrad.linrad_server(listen_ip=$ip, samp_rate=$samp_rate, ad_channels=$ad, rf_channels=$rf, bufsize=$buf, iq_data=$iq)</make>
+
+  <param>
+    <name>Listen IP</name>
+    <key>ip</key>
+    <value>"0.0.0.0"</value>
+    <type>string</type>
+  </param>
+
+  <param>
+    <name>Sample rate</name>
+    <key>samp_rate</key>
+    <value>samp_rate</value>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>AD channels</name>
+    <key>ad</key>
+    <value>2</value>
+    <type>int</type>
+  </param>
+
+   <param>
+    <name>RF channels</name>
+    <key>rf</key>
+    <value>1</value>
+    <type>int</type>
+   </param>
+
+   <param>
+     <name>Buffer size</name>
+     <key>buf</key>
+     <value>0x1000</value>
+     <type>int</type>
+   </param>
+
+   <param>
+     <name>IQ data</name>
+     <key>iq</key>
+     <value>True</value>
+     <type>bool</type>
+   </param>
+</block>
