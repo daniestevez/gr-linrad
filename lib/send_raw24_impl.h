@@ -38,7 +38,6 @@ namespace gr {
     class send_raw24_impl : public send_raw24
     {
      private:
-      float d_passband_center;
       uint32_t d_bufsize;
       uint32_t d_ptr;
       uint16_t d_block_no;
@@ -55,6 +54,8 @@ namespace gr {
          gr_vector_const_void_star &input_items,
          gr_vector_void_star &output_items);
     };
+
+      float d_passband_center;
 
   } // namespace linrad
 } // namespace gr

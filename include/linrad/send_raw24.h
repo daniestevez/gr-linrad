@@ -47,6 +47,8 @@ namespace gr {
        * creating new instances.
        */
       static sptr make(char *ip, int base_port, float passband_center, int bufsize);
+
+      void set_frequency(float freq);
     };
 
   } // namespace linrad

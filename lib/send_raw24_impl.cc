@@ -130,6 +130,10 @@ namespace gr {
       return noutput_items;
     }
 
+    void send_raw24::set_frequency(float freq) {
+      d_passband_center = freq;
+    }
+
   } /* namespace linrad */
 } /* namespace gr */
 

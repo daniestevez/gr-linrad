@@ -5,6 +5,8 @@
   <category>[linrad]</category>
   <import>import linrad</import>
   <make>linrad.send_raw24($*ip, $base_port, $passband_center, $bufsize)</make>
+
+  <callback>set_frequency($passband_center)</callback>
   
   <param>
     <name>IP</name>
