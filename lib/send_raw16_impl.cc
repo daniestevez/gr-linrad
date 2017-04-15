@@ -23,7 +23,7 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "send_raw24_impl.h"
+#include "send_raw16_impl.h"
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -37,18 +37,18 @@
 namespace gr {
   namespace linrad {
 
-    send_raw24::sptr
-    send_raw24::make(char *ip, int base_port, float passband_center, int bufsize)
+    send_raw16::sptr
+    send_raw16::make(char *ip, int base_port, float passband_center, int bufsize)
     {
       return gnuradio::get_initial_sptr
-        (new send_raw24_impl(ip, base_port, passband_center, bufsize));
+        (new send_raw16_impl(ip, base_port, passband_center, bufsize));
     }
 
     /*
      * The private constructor
      */
-    send_raw24_impl::send_raw24_impl(char *ip, int base_port, float passband_center, int bufsize)
-      : gr::sync_block("send_raw24",
+    send_raw16_impl::send_raw16_impl(char *ip, int base_port, float passband_center, int bufsize)
+      : gr::sync_block("send_raw16",
               gr::io_signature::make(1, 1, sizeof(gr_complex)),
               gr::io_signature::make(0, 0, 0))
     {
@@ -64,19 +64,19 @@ namespace gr {
 
       memset(&d_sockaddr, 0, sizeof(struct sockaddr_in));
       d_sockaddr.sin_family = AF_INET;
-      d_sockaddr.sin_port = htons(base_port + 2);
+      d_sockaddr.sin_port = htons(base_port);
       d_sockaddr.sin_addr.s_addr = inet_addr(ip);
     }
 
     /*
      * Our virtual destructor.
      */
-    send_raw24_impl::~send_raw24_impl()
+    send_raw16_impl::~send_raw16_impl()
     {
     }
 
     int
-    send_raw24_impl::work(int noutput_items,
+    send_raw16_impl::work(int noutput_items,
         gr_vector_const_void_star &input_items,
         gr_vector_void_star &output_items)
     {
@@ -92,18 +92,16 @@ namespace gr {
 	for (int j = 0; j < SAMPLES_PER_PACKET; j++) {
 	  sample = (int32_t) (in[i+j].real() * INT32_MAX);
 	  /* 2 is for 2 ad channels */
-	  packet[HEADER_LEN + j*2*BYTES_PER_SAMPLE] = sample_ptr[1];
-	  packet[HEADER_LEN + j*2*BYTES_PER_SAMPLE + 1] = sample_ptr[2];
-	  packet[HEADER_LEN + j*2*BYTES_PER_SAMPLE + 2] = sample_ptr[3];
+	  packet[HEADER_LEN + j*2*BYTES_PER_SAMPLE] = sample_ptr[2];
+	  packet[HEADER_LEN + j*2*BYTES_PER_SAMPLE + 1] = sample_ptr[3];
 
 	  sample = (int32_t) (in[i+j].imag() * INT32_MAX);
 	  /* 2 is for 2 ad channels */
-	  packet[HEADER_LEN + j*2*BYTES_PER_SAMPLE + 3] = sample_ptr[1];
-	  packet[HEADER_LEN + j*2*BYTES_PER_SAMPLE + 4] = sample_ptr[2];
-	  packet[HEADER_LEN + j*2*BYTES_PER_SAMPLE + 5] = sample_ptr[3];
+	  packet[HEADER_LEN + j*2*BYTES_PER_SAMPLE + 2] = sample_ptr[2];
+	  packet[HEADER_LEN + j*2*BYTES_PER_SAMPLE + 3] = sample_ptr[3];
 	}
 	
-	d_ptr = (d_ptr + NET_MULTICAST_PAYLOAD*4/3) % d_bufsize;
+	d_ptr = (d_ptr + NET_MULTICAST_PAYLOAD) % d_bufsize;
 
 	gettimeofday(&tv, NULL);
 	header->passband_center = d_passband_center;

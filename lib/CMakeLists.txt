@@ -27,6 +27,7 @@ link_directories(${Boost_LIBRARY_DIRS})
 
 list(APPEND linrad_sources
     send_raw24_impl.cc
+    send_raw16_impl.cc
 )
 
 set(linrad_sources "${linrad_sources}" PARENT_SCOPE)

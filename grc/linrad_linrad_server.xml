@@ -4,7 +4,7 @@
   <key>linrad_server</key>
   <category>[linrad]</category>
   <import>import linrad</import>
-  <make>linrad.linrad_server(listen_ip=$ip, samp_rate=$samp_rate, ad_channels=$ad, rf_channels=$rf, bufsize=$buf, iq_data=$iq)</make>
+  <make>linrad.linrad_server(listen_ip=$ip, samp_rate=$samp_rate, ad_channels=$ad, rf_channels=$rf, bufsize=$buf, iq_data=$iq, dword_input=$dword)</make>
 
   <param>
     <name>Listen IP</name>
@@ -44,6 +44,13 @@
    <param>
      <name>IQ data</name>
      <key>iq</key>
+     <value>True</value>
+     <type>bool</type>
+   </param>
+
+   <param>
+     <name>DWORD_INPUT (set to false for 16bit)</name>
+     <key>dword</key>
      <value>True</value>
      <type>bool</type>
    </param>

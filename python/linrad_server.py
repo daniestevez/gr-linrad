@@ -30,7 +30,7 @@ class linrad_server(gr.basic_block):
     """
     docstring for block linrad_server
     """
-    def __init__(self, listen_ip, samp_rate, ad_channels, rf_channels, bufsize, iq_data):
+    def __init__(self, listen_ip, samp_rate, ad_channels, rf_channels, bufsize, iq_data, dword_input):
         gr.basic_block.__init__(self,
             name="linrad_server",
             in_sig=[],
@@ -43,7 +43,7 @@ class linrad_server(gr.basic_block):
         self.bufsize = bufsize
         # input mode = 1 -> DWORD_INPUT
         # input mode = 4 -> IQ_DATA
-        self.input_mode = 5 if iq_data else 1
+        self.input_mode = dword_input | iq_data << 2
 
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.bind((listen_ip, 49812))

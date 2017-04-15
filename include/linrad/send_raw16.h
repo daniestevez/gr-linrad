@@ -19,8 +19,8 @@
  */
 
 
-#ifndef INCLUDED_LINRAD_SEND_RAW24_H
-#define INCLUDED_LINRAD_SEND_RAW24_H
+#ifndef INCLUDED_LINRAD_SEND_RAW16_H
+#define INCLUDED_LINRAD_SEND_RAW16_H
 
 #include <linrad/api.h>
 #include <gnuradio/sync_block.h>
@@ -33,17 +33,17 @@ namespace gr {
      * \ingroup linrad
      *
      */
-    class LINRAD_API send_raw24 : virtual public gr::sync_block
+    class LINRAD_API send_raw16 : virtual public gr::sync_block
     {
      public:
-      typedef boost::shared_ptr<send_raw24> sptr;
+      typedef boost::shared_ptr<send_raw16> sptr;
 
       /*!
-       * \brief Return a shared_ptr to a new instance of linrad::send_raw24.
+       * \brief Return a shared_ptr to a new instance of linrad::send_raw16.
        *
-       * To avoid accidental use of raw pointers, linrad::send_raw24's
+       * To avoid accidental use of raw pointers, linrad::send_raw16's
        * constructor is in a private implementation
-       * class. linrad::send_raw24::make is the public interface for
+       * class. linrad::send_raw16::make is the public interface for
        * creating new instances.
        */
       static sptr make(char *ip, int base_port, float passband_center, int bufsize);

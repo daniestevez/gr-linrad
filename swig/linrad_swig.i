@@ -14,3 +14,11 @@
 
 %include "linrad/send_raw24.h"
 GR_SWIG_BLOCK_MAGIC2(linrad, send_raw24);
+
+%{
+#include "linrad/send_raw16.h"
+%}
+
+
+%include "linrad/send_raw16.h"
+GR_SWIG_BLOCK_MAGIC2(linrad, send_raw16);

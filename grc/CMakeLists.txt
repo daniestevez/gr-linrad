@@ -19,5 +19,6 @@
 
 install(FILES
 	linrad_linrad_server.xml
-    	linrad_send_raw24.xml DESTINATION share/gnuradio/grc/blocks
+    	linrad_send_raw24.xml
+	linrad_send_raw16.xml DESTINATION share/gnuradio/grc/blocks
 )

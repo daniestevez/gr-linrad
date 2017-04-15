@@ -18,10 +18,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_LINRAD_SEND_RAW24_IMPL_H
-#define INCLUDED_LINRAD_SEND_RAW24_IMPL_H
+#ifndef INCLUDED_LINRAD_SEND_RAW16_IMPL_H
+#define INCLUDED_LINRAD_SEND_RAW16_IMPL_H
 
-#include <linrad/send_raw24.h>
+#include <linrad/send_raw16.h>
 
 
 #include <sys/types.h>
@@ -29,16 +29,16 @@
 #include <netinet/in.h>
 
 #include "header.h"
-#define BYTES_PER_SAMPLE 3
+#define BYTES_PER_SAMPLE 2
 #define SAMPLES_PER_PACKET (NET_MULTICAST_PAYLOAD/(BYTES_PER_SAMPLE*2))
 
 namespace gr {
   namespace linrad {
 
-    class send_raw24_impl : public send_raw24
+    class send_raw16_impl : public send_raw16
     {
       float d_passband_center;
-      
+
      private:
       uint32_t d_bufsize;
       uint32_t d_ptr;
@@ -48,8 +48,8 @@ namespace gr {
       
 
      public:
-      send_raw24_impl(char *ip, int base_port, float passband_center, int bufsize);
-      ~send_raw24_impl();
+      send_raw16_impl(char *ip, int base_port, float passband_center, int bufsize);
+      ~send_raw16_impl();
 
       // Where all the action really happens
       int work(int noutput_items,
@@ -62,5 +62,5 @@ namespace gr {
   } // namespace linrad
 } // namespace gr
 
-#endif /* INCLUDED_LINRAD_SEND_RAW24_IMPL_H */
+#endif /* INCLUDED_LINRAD_SEND_RAW16_IMPL_H */
 
