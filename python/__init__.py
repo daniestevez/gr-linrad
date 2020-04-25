@@ -19,18 +19,14 @@
 # The presence of this file turns this directory into a Python package
 
 '''
-This is the GNU Radio LINRAD module. Place your Python package
-description here (python/__init__.py).
+GNU Radio implementation of the Linrad network protocol
 '''
+from __future__ import unicode_literals
 
 # import swig generated symbols into the linrad namespace
-try:
-	# this might fail if the module is python-only
-	from linrad_swig import *
-except ImportError:
-	pass
+from .linrad_swig import *
 
 # import any pure python here
 #
+from .linrad_server import linrad_server
 
-from linrad_server import linrad_server

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 
 # Copyright 2017 Daniel Estevez <daniel@destevez.net>
@@ -28,7 +28,10 @@ import threading
 
 class linrad_server(gr.basic_block):
     """
-    docstring for block linrad_server
+    Linrad server block
+
+    Accepts clients and suplies them with basic information about the
+    signal being streamed
     """
     def __init__(self, listen_ip, samp_rate, ad_channels, rf_channels, bufsize, iq_data, dword_input):
         gr.basic_block.__init__(self,
@@ -50,6 +53,7 @@ class linrad_server(gr.basic_block):
         self.socket.listen(1)
         
         t = threading.Thread(target=self.server)
+        t.daemon = True
         t.start()
 
     def server(self):
@@ -64,12 +68,12 @@ class linrad_server(gr.basic_block):
                 data = conn.recv(1024)
                 if not data: break
                 if len(data) == 0: continue
-                if data[0] == '\xb8':
+                if data[0] == 0xb8:
                     response = struct.pack('<8i', self.samp_rate, self.ad_channels,\
                                            self.rf_channels, self.input_mode, self.bufsize, 0, 0, 0)
                     conn.send(response)
-                elif data[0] == '\xb5' or data[0] == '\xb6':
-                    conn.send('\x00')
+                elif data[0] in {0xb5, 0xb6}:
+                    conn.send(b'\x00')
         finally:
             conn.close()
 

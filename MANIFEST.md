@@ -1,16 +1,16 @@
-title: The LINRAD OOT Module
-brief: Short description of gr-linrad
+title: gr-linrad
+brief: Sink blocks for Linrad network protocol
 tags: # Tags are arbitrary, but look at CGRAN what other authors are using
   - sdr
+  - linrad
 author:
-  - Author Name <authors@email.address>
+  - Daniel Estevez <daniel@destevez.net>
 copyright_owner:
-  - Copyright Owner 1
-license:
-#repo: # Put the URL of the repository here, or leave blank for default
+  - Daniel Estevez
+license: GPLv3
+repo: https://github.com/daniestevez/gr-linrad 
 #website: <module_website> # If you have a separate project website, put it here
 #icon: <icon_url> # Put a URL to a square image here that will be used as an icon on CGRAN
 ---
-A longer, multi-line description of gr-linrad.
-You may use some *basic* Markdown here.
-If left empty, it will try to find a README file instead.
+GNU Radio module implementing the Linrad network protocol. This allows
+to feed signals from GNU Radio into Linrad.
