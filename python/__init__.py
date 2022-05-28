@@ -1,32 +1,23 @@
 #
 # Copyright 2008,2009 Free Software Foundation, Inc.
 #
-# This application is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3, or (at your option)
-# any later version.
-#
-# This application is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# SPDX-License-Identifier: GPL-3.0-or-later
 #
 
 # The presence of this file turns this directory into a Python package
 
 '''
-GNU Radio implementation of the Linrad network protocol
+This is the GNU Radio LINRAD module. Place your Python package
+description here (python/__init__.py).
 '''
-from __future__ import unicode_literals
+import os
 
-# import swig generated symbols into the linrad namespace
-from .linrad_swig import *
+# import pybind11 generated symbols into the linrad namespace
+try:
+    # this might fail if the module is python-only
+    from .linrad_python import *
+except ModuleNotFoundError:
+    pass
 
 # import any pure python here
-#
 from .linrad_server import linrad_server
-

@@ -36,7 +36,7 @@ namespace gr {
     class LINRAD_API send_raw16 : virtual public gr::sync_block
     {
      public:
-      typedef boost::shared_ptr<send_raw16> sptr;
+      typedef std::shared_ptr<send_raw16> sptr;
 
       /*!
        * \brief Return a shared_ptr to a new instance of linrad::send_raw16.
