@@ -23,6 +23,7 @@ namespace py = pybind11;
 // BINDING_FUNCTION_PROTOTYPES(
 void bind_send_raw16(py::module& m);
 void bind_send_raw24(py::module& m);
+void bind_fill_missing_blocks(py::module& m);
 // ) END BINDING_FUNCTION_PROTOTYPES
 
 
@@ -53,5 +54,6 @@ PYBIND11_MODULE(linrad_python, m)
     // BINDING_FUNCTION_CALLS(
     bind_send_raw16(m);
     bind_send_raw24(m);
+    bind_fill_missing_blocks(m);
     // ) END BINDING_FUNCTION_CALLS
 }

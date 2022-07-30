@@ -5,10 +5,9 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
-
 install(FILES
     linrad_linrad_server.block.yml
     linrad_send_raw16.block.yml
     linrad_send_raw24.block.yml
-    DESTINATION share/gnuradio/grc/blocks
+    linrad_fill_missing_blocks.block.yml DESTINATION share/gnuradio/grc/blocks
 )

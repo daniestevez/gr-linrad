@@ -29,6 +29,7 @@ include(GrPybind)
 ########################################################################
 
 list(APPEND linrad_python_files
+    fill_missing_blocks_python.cc
     python_bindings.cc
     send_raw16_python.cc
     send_raw24_python.cc)

@@ -1,0 +1,21 @@
+id: linrad_fill_missing_blocks
+label: Fill missing Linrad blocks
+category: '[linrad]'
+
+templates:
+  imports: import linrad
+  make: linrad.fill_missing_blocks()
+
+inputs:
+- label: in
+  domain: stream
+  dtype: byte
+  vlen: 1416
+
+outputs:
+- label: out
+  domain: stream
+  dtype: short
+  vlen: 696
+
+file_format: 1

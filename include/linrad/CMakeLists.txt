@@ -13,5 +13,5 @@ install(FILES
     api.h
     send_raw16.h
     send_raw24.h
-    DESTINATION include/linrad
+    fill_missing_blocks.h DESTINATION include/linrad
 )

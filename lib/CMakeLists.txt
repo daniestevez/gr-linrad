@@ -10,11 +10,10 @@
 # Setup library
 ########################################################################
 include(GrPlatform) #define LIB_SUFFIX
-
 list(APPEND linrad_sources
     send_raw16_impl.cc
     send_raw24_impl.cc
-)
+    fill_missing_blocks_impl.cc )
 
 set(linrad_sources "${linrad_sources}" PARENT_SCOPE)
 if(NOT linrad_sources)
